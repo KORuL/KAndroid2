@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="mail_subject">Ημερολόγιο</string>
+    <string name="export_chooser_title">Εξαγωγή…</string>
+
+
+</resources>

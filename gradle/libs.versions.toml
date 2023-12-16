@@ -1,0 +1,48 @@
+[versions]
+agp = "8.3.0-alpha18"
+gradle = "4.2.2"
+kotlin = "1.9.21"
+# https://github.com/Kotlin/kotlinx.coroutines
+kotlin-coroutines = "1.7.3"
+coreKtx = "1.12.0"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+appcompat = "1.6.1"
+kotlinGradlePlugin = "1.6.10"
+material = "1.11.0"
+androidx-preference = "1.2.1"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Coroutines
+kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
+# Material
+androidx-material = { module = "com.google.android.material:material", version.ref = "material" }
+# preference
+androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "androidx-preference" }
+# Timber
+timber = "com.jakewharton.timber:timber:5.0.1"
+# annotation
+androidx-annotation = "androidx.annotation:annotation:1.7.1"
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+
+[bundles]
+kotlin-coroutines = [
+    "kotlin-coroutines-android",
+    "kotlin-coroutines-core",
+]

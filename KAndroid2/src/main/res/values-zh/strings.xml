@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="mail_subject">日志</string>
+    <string name="export_chooser_title">导出…</string>
+
+</resources>

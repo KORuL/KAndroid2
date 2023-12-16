@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="mail_subject">Tagebuch</string>
+    <string name="export_chooser_title">"Exportieren…</string>
+
+
+</resources>

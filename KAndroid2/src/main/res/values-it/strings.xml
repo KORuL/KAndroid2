@@ -1,0 +1,6 @@
+<resources>
+
+    <string name="mail_subject">Diario</string>
+    <string name="export_chooser_title">Esporta…</string>
+
+</resources>
