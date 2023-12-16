@@ -30,7 +30,7 @@ dependencyResolutionManagement {
 
 
 dependencies {
-    implementation 'com.github.KORuL:KAndroid-2.0:Tag'
+    implementation 'com.github.KORuL:KAndroid2:1.0.0'
 }
 ```
 
