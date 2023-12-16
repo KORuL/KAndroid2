@@ -1,4 +1,4 @@
-# KAndroid-2.0
+# KAndroid2
 
 <img src="art/logo.png" width="160px">
 
