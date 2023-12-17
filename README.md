@@ -36,10 +36,80 @@ dependencies {
 
 Usage
 -----
+#### Coroutines + Flow
+```kotlin
+..ViewModel:
+class SomeViewModel : ViewModel() {
+
+    val mSelectedRecTypes = MutableStateFlow<Set<String>>(setOf())
+
+}
+
+..Activity:
+
+viewModelSome.mSelectedRecTypes
+    .launchAndCollectIn {
+        listSelRecType.tryEmit(it.toMutableList())
+    }
+
+or
+
+viewModelSome.mSelectedRecTypes
+    .launchAndCollectIn(Lifecycle.State.STARTED) {
+        listSelRecType.tryEmit(it.toMutableList())
+    }
+```
+#### Clicks
+```kotlin
+    binding.item.clickWithDebounce {
+        ...
+    }
+```
+#### TimePicker Compat
+```kotlin
+ binding.TimePicker.setHourCompat(hour)
+ binding.TimePicker.setMinuteCompat(min)
+```
 #### Binding views
 ```kotlin
 // instead of findViewById(R.id.textView) as TextView
 val textView = find<TextView>(R.id.textView)
+```
+#### Min Max double EditText
+```kotlin
+binding.cntNP.addInputFilterMinMaxDouble(mMaxIntegerDigitsLength = 5, mMaxDigitsAfterLength = 0, mMax = 10000.0)
+```
+#### BluetoothGatt Compat
+```kotlin
+currentGatt?.writeCharacteristicCompat(controlCharecter, ("pin.$pin").toByteArray())
+```
+#### KArgument
+```kotlin
+    companion object {
+        const val ISPREMIUM = "isPremium"
+        fun newInstance(isPremium: Boolean): BolusCoefFragment =
+            BolusCoefFragment().apply {
+                arguments = Bundle().apply {
+                    putBoolean(ISPREMIUM, isPremium)
+                }
+            }
+    }
+////
+...
+///
+class BolusCoefFragment : BaseFragment(R.layout.view_profile_coefficient_edit) {
+
+    private val bindingAll: ViewProfileCoefficientEditBinding by viewBinding(CreateMethod.BIND)
+
+    private val isPremium by argNotNull<Boolean>(ISPREMIUM, false)
+....
+}
+...
+```
+#### Vibrate
+```kotlin
+ val mv: Vibrator? = this.vibrator
+ mv?.vibrateCompat(pattern)
 ```
 #### Accessing ViewGroup children
 ```kotlin
@@ -70,7 +140,24 @@ editText.textWatcher {
     afterTextChanged { text -> after() }
 }
 ```
-
+#### Serializable Parcelable
+```kotlin
+	val result = intent.serializable<ProductState>(KEY_STATE)
+...
+	val result = bundle.parcelable<Units>(RedactorMera.RESULTNEWMERA
+...
+        val result = bundle.parcelableArrayList<RecipesProducts>(ProductsRecipesListFragment.RESULTLIST)?.toTypedArray()
+```
+#### Activity
+```kotlin
+lockCurrentScreenOrientation()
+unlockScreenOrientation()
+setShowWhenLockedCompat(show: Boolean)
+setTurnScreenOnCompat(turn: Boolean)
+requestDismissKeyguard()
+enableFullScreen()
+disableFullScreen()
+```
 #### SearchView extensions
 ```kotlin
 /* instead of:
@@ -242,8 +329,12 @@ animation.animListener {
 ```kotlin
 // instead of Intent(Intent.ACTION_VIEW, Uri.parse("http://github.com"))
 WebIntent("http://github.com")
+```
+
+#### ImagePressEffect, Format Numbers, displayMetrics, Bitmap.use, Calendar, setColorFilterCompat, Context.defaultSharedPreferences, toast, Alerts, Dialogs, DiffUtils, Editable, saveBitmapToStorage, addItemDecorationIfNone, hasConnection(), isNetworkAvailable(), goToNotificationSettings, sendFileByEmail, getColorFromAttr, setRippleBackground, WeakReferenceDelegate and many other..
 
 License
+```kotlin
 -------
 
     Copyright 2015-2017 Paweł Gajda
@@ -259,3 +350,4 @@ License
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+```
