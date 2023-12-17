@@ -58,6 +58,24 @@ viewModelSome.mSelectedRecTypes
     .launchAndCollectIn(Lifecycle.State.STARTED) {
         listSelRecType.tryEmit(it.toMutableList())
     }
+
+///
+...
+
+viewModel.showAllergens
+    .filterNotNull()
+    .launchAndCollectIn {
+        showAllergens(it)
+    }
+///
+...
+
+launchAndRepeatWithViewLifecycle {
+    viewModel.glucose
+        .collect {
+            ....
+        }
+}
 ```
 #### Clicks
 ```kotlin
